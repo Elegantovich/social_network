@@ -30,7 +30,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'SocualNenwork.urls'
+ROOT_URLCONF = 'SocialNetwork.urls'
 
 TEMPLATES = [
     {
@@ -48,7 +48,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'SocualNenwork.wsgi.application'
+WSGI_APPLICATION = 'SocialNetwork.wsgi.application'
 
 DATABASES = {
     'default': {
