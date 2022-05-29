@@ -21,6 +21,9 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'password']
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return self.username
 
@@ -40,7 +43,7 @@ class Post(models.Model):
     text = models.TextField(
         verbose_name='Описание поста'
         )
-    pub_date = models.DateTimeField(
+    pub_date = models.DateField(
         auto_now_add=True,
         verbose_name='Дата создания',
         )
@@ -52,7 +55,6 @@ class Post(models.Model):
     class Meta:
 
         ordering = ('-pub_date', )
-
 
     def __str__(self):
         return self.name
@@ -72,6 +74,8 @@ class Favorite(models.Model):
         verbose_name='Пост',
         )
 
+    class Meta:
+        ordering = ['-id']
 
     def __str__(self):
 
