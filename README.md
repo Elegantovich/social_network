@@ -4,7 +4,6 @@
 Python 3.7, Django 3.2, Rest Framework 3.13, Docker, PostgreSQL, nginx
 
 ## Описание.
-
 Проект **social_network** является REST API для приложения формата соц. сети с пользователями и постами.
 
 ## Установка на локальном компьютере.
@@ -46,24 +45,22 @@ docker-compose up -d --build
 ```
 docker-compose exec web python manage.py migrate
 ```
-Создайте суперпользователя:
-```
-docker-compose exec web python manage.py createsuperuser
-```
 Соберите статику в единую папку:
 ```
 docker-compose exec web python manage.py collectstatic --no-input
 ```
+
+Далее перейдите по ендпоинту регистрации. Необходимо будет ввести учётные данные. После этого нужно получить jwt токен, иначе система пермишенов не допустит вас к созданию постов. К токену добавьте Bearer. После всего перечисленного можно создавать посты и подписываться на чужие.
 
 
 ### Поддерживаемые endpoints:
 
 | URL| Method | Description |
 | ------ | ------ | ------ |
-| http://localhost/api/auth/ | POST | Получить токен |
 | http://localhost/api/users/ | POST, GET | Создать, просмотреть пользователя(-ей) |
-| http://localhost/api/posts/ | POST, GET | Создать пост или получить все посты|
-| http://localhost/api/posts/<post_id>/ | GET | Получить нужный блог |
+| http://localhost/api/auth/ | POST | Получить токен |
+| http://localhost/api/posts/ | POST, GET | Создать пост или получить все посты |
+| http://localhost/api/posts/<post_id>/ | GET | Получить нужный пост |
 | http://localhost/api/posts/<post_id>/favorite/ | POST, DELETE | Добавить (удалить) пост в избранное |
 | http://localhost/api/posts/favorite/ | GET | Получить все избранные посты |
 
